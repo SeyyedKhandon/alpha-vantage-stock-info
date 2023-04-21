@@ -6,7 +6,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-// const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
+
 
 export default function Chart({
   className = "",
@@ -29,5 +29,11 @@ export default function Chart({
       <Tooltip />
     </LineChart>
   );
-  return <div className={className}>{renderLineChart}</div>;
+  const symbol = window.location.pathname.slice(1);
+  return (
+    <div className={className}>
+      {renderLineChart}
+      <h3 className="text-center text-xl">{symbol}</h3>
+    </div>
+  );
 }
