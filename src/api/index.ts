@@ -41,11 +41,11 @@ function dataAdaptor(info: any, dailyPrices: any) {
       country: info.Country,
       ["Market Capitalization"]: info.MarketCapitalization,
     }),
-    dailyPrices: Object.entries(dailyPrices["Time Series (Daily)"]).map(
-      (entry: any) => ({
+    dailyPrices: Object.entries(dailyPrices["Time Series (Daily)"])
+      .map((entry: any) => ({
         name: entry[0],
         price: entry[1]["4. close"],
-      })
-    ),
+      }))
+      .reverse(),
   };
 }
