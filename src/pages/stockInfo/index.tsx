@@ -47,7 +47,7 @@ function StockInfo() {
       <button
         type="submit"
         onClick={() => navigate("/")}
-        className="rounded-lg px-5 py-2.5 text-center text-sm font-medium text-slate-800 hover:bg-slate-200 focus:outline-none focus:ring-4 sm:w-auto"
+        className="rounded-lg px-5 py-2.5 text-center text-sm font-medium text-slate-800 hover:bg-slate-200"
       >
         &larr; Back
       </button>
