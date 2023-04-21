@@ -43,7 +43,7 @@ function StockInfo() {
     );
 
   return (
-    <main>
+    <>
       <button
         type="submit"
         onClick={() => navigate("/")}
@@ -52,11 +52,15 @@ function StockInfo() {
         &larr; Back
       </button>
       <h1 className="text-center text-4xl">{data.info[0][1]}</h1>
-      <div className="my-10 flex min-h-full w-full flex-col justify-around gap-8 px-10 lg:flex-row">
+      <div className="my-10 flex min-h-full w-full flex-col justify-around gap-8 lg:flex-row">
         <Table className="w-full lg:order-1 lg:w-1/2" records={data.info} />
-        <Chart className="w-full lg:w-1/2" data={data.dailyPrices} />
+        <Chart
+          className="w-full lg:w-1/2"
+          data={data.dailyPrices}
+          symbol={symbol!}
+        />
       </div>
-    </main>
+    </>
   );
 }
 

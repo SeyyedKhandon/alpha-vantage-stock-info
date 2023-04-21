@@ -11,9 +11,11 @@ import {
 export default function Chart({
   className = "",
   data,
+  symbol = "",
 }: {
   className: string;
   data: any;
+  symbol: string;
 }) {
   const renderLineChart = (
     <ResponsiveContainer height="100%" aspect={1}>
@@ -26,7 +28,6 @@ export default function Chart({
       </LineChart>
     </ResponsiveContainer>
   );
-  const symbol = window.location.pathname.slice(1);
   return (
     <div className={className}>
       {renderLineChart}

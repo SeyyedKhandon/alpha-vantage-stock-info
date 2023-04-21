@@ -9,11 +9,13 @@ import StockInfo from "@/pages/stockInfo";
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Form />} />
-        <Route path="/stock-info/:name" element={<StockInfo />} />
-        <Route path="*" element={<Navigate to="/" replace={true} />} />
-      </Routes>
+      <main className="my-10 px-10">
+        <Routes>
+          <Route path="/" element={<Form />} />
+          <Route path="/stock-info/:name" element={<StockInfo />} />
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
+        </Routes>
+      </main>
     </Router>
   );
 }

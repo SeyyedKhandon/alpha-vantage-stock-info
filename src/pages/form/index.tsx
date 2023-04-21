@@ -6,7 +6,7 @@ function Form() {
   const [symbol, setSymbol] = useState("");
 
   return (
-    <main className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-5xl">
       <h1 className="text-center text-4xl">Enter Market Symbol</h1>
       <div>
         <label
@@ -34,7 +34,7 @@ function Form() {
       >
         Submit &rarr;
       </button>
-    </main>
+    </div>
   );
 }
 
