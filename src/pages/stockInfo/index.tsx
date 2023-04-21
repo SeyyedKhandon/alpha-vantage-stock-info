@@ -1,30 +1,17 @@
 import Table from "@/components/table";
-import { useEffect, useState } from "react";
-import GetStockInfo from "@/api";
 import Chart from "@/components/chart";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ChartSkeleton, ListSkeleton } from "@/components/skeleton";
+import { useFetchCompanyBasicInfo, useFetchDailyClosePrices } from "@/api";
 
 function StockInfo() {
   const navigate = useNavigate();
-  const symbol = window.location.pathname.split("/").at(-1);
-  const [data, setData] = useState({ info: [], dailyPrices: [] });
+  const { symbol } = useParams<{ symbol: string }>();
 
-  useEffect(() => {
-    if (symbol) GetStockInfo(symbol).then((res) => setData(res as any));
-    else navigate("/");
-  }, []);
-
-  if (data === null)
-    return <div className="text-4xl text-red-500">You Hit the API Limit</div>;
-
-  if (data.info.length === 0)
-    return (
-      <div className="flex flex-col gap-10 md:flex-row">
-        <ChartSkeleton />
-        <ListSkeleton />
-      </div>
-    );
+  if (!symbol) {
+    navigate("/");
+    return null;
+  }
 
   return (
     <>
@@ -35,17 +22,52 @@ function StockInfo() {
       >
         &larr; Back
       </button>
-      <h1 className="text-center text-4xl">{data.info[0][1]}</h1>
-      <div className="my-10 flex min-h-full w-full flex-col justify-around gap-8 lg:flex-row">
-        <Table className="w-full lg:order-1 lg:w-1/2" records={data.info} />
-        <Chart
-          className="w-full lg:w-1/2"
-          data={data.dailyPrices}
-          symbol={symbol!}
-        />
+      {/* <h1 className="text-center text-4xl">{info[0][1]}</h1> */}
+      <div className="my-10 flex min-h-full w-full flex-col justify-around gap-8 lg:flex-row-reverse">
+        <CompanyInfo symbol={symbol} />
+        <DailyClosePricesChart symbol={symbol} />
       </div>
     </>
   );
 }
 
+function CompanyInfo({ symbol }: { symbol: string }) {
+  const {
+    data: companyInfo,
+    isError,
+    isLoading,
+  } = useFetchCompanyBasicInfo(symbol);
+
+  if (isError)
+    return <div className="text-4xl text-red-500">You Hit the API Limit</div>;
+
+  if (isLoading) return <ListSkeleton className="lg:w-1/2" />;
+
+  const records = Object.entries(companyInfo);
+
+  return <Table className="w-full lg:w-1/2" records={records} />;
+}
+
+function DailyClosePricesChart({ symbol }: { symbol: string }) {
+  const {
+    data: dailyClosePrices,
+    isError,
+    isLoading,
+  } = useFetchDailyClosePrices(symbol);
+
+  if (isError)
+    return <div className="text-4xl text-red-500">You Hit the API Limit</div>;
+
+  if (isLoading) return <ChartSkeleton className="lg:w-1/2" />;
+
+  return (
+    <Chart
+      className="w-full lg:w-1/2"
+      data={dailyClosePrices}
+      title={symbol}
+      ChartDataKey="closePrice"
+      xAxisDataKey="time"
+    />
+  );
+}
 export default StockInfo;

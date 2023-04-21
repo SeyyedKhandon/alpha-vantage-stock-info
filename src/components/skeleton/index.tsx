@@ -1,8 +1,8 @@
-export function ListSkeleton({ rows = 6 }) {
+export function ListSkeleton({ rows = 6, className = "" }) {
   return (
     <div
       role="status"
-      className="flex-grow animate-pulse space-y-4 divide-y divide-gray-200 rounded border border-gray-200 p-4 shadow md:p-6"
+      className={`flex-grow animate-pulse space-y-4 divide-y divide-gray-200 rounded border border-gray-200 p-4 shadow md:p-6 ${className}`}
     >
       {[...Array(rows).keys()].map((i) => (
         <div className="flex items-center justify-between pt-4" key={i}>
@@ -17,11 +17,11 @@ export function ListSkeleton({ rows = 6 }) {
   );
 }
 
-export function ChartSkeleton() {
+export function ChartSkeleton({ className = "" }) {
   return (
     <div
       role="status"
-      className="animate-pulse rounded border border-gray-200 p-4 shadow md:p-6"
+      className={`animate-pulse rounded border border-gray-200 p-4 shadow md:p-6 ${className}`}
     >
       <div className="mb-2.5 h-2.5 w-32 rounded-full bg-gray-200"></div>
       <div className="mb-10 h-2 w-48 rounded-full bg-gray-200"></div>

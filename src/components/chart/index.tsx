@@ -11,18 +11,22 @@ import {
 export default function Chart({
   className = "",
   data,
-  symbol = "",
+  title = "",
+  ChartDataKey = "closePrice",
+  xAxisDataKey = "time",
 }: {
   className: string;
-  data: any;
-  symbol: string;
+  data: any[];
+  title: string;
+  ChartDataKey: string;
+  xAxisDataKey: string;
 }) {
   const renderLineChart = (
     <ResponsiveContainer height="100%" aspect={1}>
       <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <Line type="monotone" dataKey="price" stroke="#8884d8" />
+        <Line type="monotone" dataKey={ChartDataKey} stroke="#8884d8" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey={xAxisDataKey} />
         <YAxis />
         <Tooltip />
       </LineChart>
@@ -31,7 +35,7 @@ export default function Chart({
   return (
     <div className={className}>
       {renderLineChart}
-      <h3 className="text-center text-xl">{symbol}</h3>
+      <h3 className="text-center text-xl">{title}</h3>
     </div>
   );
 }
