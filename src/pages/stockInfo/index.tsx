@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import GetStockInfo from "@/api";
 import Chart from "@/components/chart";
 import { useNavigate } from "react-router-dom";
+import { ChartSkeleton, ListSkeleton } from "@/components/skeleton";
 
 function StockInfo() {
   const navigate = useNavigate();
@@ -10,11 +11,7 @@ function StockInfo() {
   const [data, setData] = useState({ info: [], dailyPrices: [] });
 
   useEffect(() => {
-    if (symbol)
-      GetStockInfo(symbol).then((res) => {
-        setData(res as any);
-        console.log(res);
-      });
+    if (symbol) GetStockInfo(symbol).then((res) => setData(res as any));
     else navigate("/");
   }, []);
 
@@ -23,22 +20,9 @@ function StockInfo() {
 
   if (data.info.length === 0)
     return (
-      <div
-        role="status"
-        className="max-w-sm animate-pulse rounded border border-gray-200 p-4 shadow dark:border-gray-700 md:p-6"
-      >
-        <div className="mb-2.5 h-2.5 w-32 rounded-full bg-gray-200 dark:bg-gray-700"></div>
-        <div className="mb-10 h-2 w-48 rounded-full bg-gray-200 dark:bg-gray-700"></div>
-        <div className="mt-4 flex items-baseline space-x-6">
-          <div className="h-72 w-full rounded-t-lg bg-gray-200 dark:bg-gray-700"></div>
-          <div className="h-56 w-full rounded-t-lg bg-gray-200 dark:bg-gray-700"></div>
-          <div className="h-72 w-full rounded-t-lg bg-gray-200 dark:bg-gray-700"></div>
-          <div className="h-64 w-full rounded-t-lg bg-gray-200 dark:bg-gray-700"></div>
-          <div className="h-80 w-full rounded-t-lg bg-gray-200 dark:bg-gray-700"></div>
-          <div className="h-72 w-full rounded-t-lg bg-gray-200 dark:bg-gray-700"></div>
-          <div className="h-80 w-full rounded-t-lg bg-gray-200 dark:bg-gray-700"></div>
-        </div>
-        <span className="sr-only">Loading...</span>
+      <div className="flex flex-col gap-10 md:flex-row">
+        <ChartSkeleton />
+        <ListSkeleton />
       </div>
     );
 

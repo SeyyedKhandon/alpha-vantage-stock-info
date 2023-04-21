@@ -5,20 +5,16 @@ function Form() {
   const navigate = useNavigate();
   const [symbol, setSymbol] = useState("");
 
-  function openStockInfoPage() {
-    if (symbol) navigate("/stock-info/" + symbol);
-  }
+  const openStockInfoPage = () => symbol && navigate("/stock-info/" + symbol);
 
   const handleKeyDown = (e: React.KeyboardEvent) =>
     e.key === "Enter" && openStockInfoPage();
+
   return (
     <div className="mx-auto max-w-5xl">
       <h1 className="text-center text-4xl">Enter Market Symbol</h1>
       <div>
-        <label
-          htmlFor="symbol"
-          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-        >
+        <label htmlFor="symbol" className="mb-2 block text-sm font-medium">
           Symbol
           <input
             type="text"
