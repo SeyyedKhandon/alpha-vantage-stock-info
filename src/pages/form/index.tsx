@@ -4,7 +4,8 @@ import { useState } from "react";
 function Form() {
   const navigate = useNavigate();
   const [symbol, setSymbol] = useState("");
-
+  const handleKeyDown = (e: React.KeyboardEvent) =>
+    e.key === "Enter" && navigate("/stock-info/" + symbol);
   return (
     <div className="mx-auto max-w-5xl">
       <h1 className="text-center text-4xl">Enter Market Symbol</h1>
@@ -22,14 +23,13 @@ function Form() {
             required
             value={symbol}
             onChange={(e: any) => setSymbol(e.target.value.toUpperCase())}
+            onKeyDown={handleKeyDown}
           />
         </label>
       </div>
       <button
         type="submit"
-        onClick={() => {
-          navigate("/stock-info/" + symbol);
-        }}
+        onClick={() => navigate("/stock-info/" + symbol)}
         className="rounded-lg px-5 py-2.5 text-center text-sm font-medium text-slate-800 hover:bg-slate-200 focus:outline-none focus:ring-4 sm:w-auto"
       >
         Submit &rarr;
