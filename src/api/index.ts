@@ -4,11 +4,17 @@ export { Api } from "./provider";
 // modules
 export type {
   CompanyBasicInfo,
-  DailyClosedPrice,
+  DailyClosePrice,
   CompanyOverview,
   MetaData,
   TimeSeriesDaily,
   TimeSeriesDailyAdjusted,
+  companyBasicInfoSchema,
+  companyOverviewSchema,
+  dailyClosePriceSchema,
+  metaDataSchema,
+  timeSeriesDailyAdjustedSchema,
+  timeSeriesDailySchema,
 } from "./modules/stockInfo/types";
 
 export {

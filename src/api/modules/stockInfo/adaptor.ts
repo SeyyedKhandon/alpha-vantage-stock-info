@@ -1,7 +1,7 @@
 import {
   CompanyBasicInfo,
   CompanyOverview,
-  DailyClosedPrice,
+  DailyClosePrice,
   TimeSeriesDailyAdjusted,
 } from "./types";
 
@@ -16,7 +16,7 @@ export const companyOverviewAdaptor = (
 
 export const dailyClosePricesAdaptor = (
   dailyPrices: TimeSeriesDailyAdjusted
-): DailyClosedPrice[] =>
+): DailyClosePrice[] =>
   Object.entries(dailyPrices["Time Series (Daily)"])
     .map((entry) => ({
       time: entry[0],

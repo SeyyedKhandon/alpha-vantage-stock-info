@@ -1,84 +1,96 @@
-export interface TimeSeriesDailyAdjusted {
-  "Meta Data": MetaData;
-  "Time Series (Daily)": { [key: string]: TimeSeriesDaily };
-}
+import { z } from "zod";
 
-export interface MetaData {
-  "1. Information": string;
-  "2. Symbol": string;
-  "3. Last Refreshed": Date;
-  "4. Output Size": string;
-  "5. Time Zone": string;
-}
+export const metaDataSchema = z.object({
+  "1. Information": z.string(),
+  "2. Symbol": z.string(),
+  "3. Last Refreshed": z.string(),
+  "4. Output Size": z.string(),
+  "5. Time Zone": z.string(),
+});
 
-export interface TimeSeriesDaily {
-  "1. open": string;
-  "2. high": string;
-  "3. low": string;
-  "4. close": string;
-  "5. adjusted close": string;
-  "6. volume": string;
-  "7. dividend amount": string;
-  "8. split coefficient": string;
-}
+export const timeSeriesDailySchema = z.object({
+  "1. open": z.string(),
+  "2. high": z.string(),
+  "3. low": z.string(),
+  "4. close": z.string(),
+  "5. adjusted close": z.string(),
+  "6. volume": z.string(),
+  "7. dividend amount": z.string(),
+  "8. split coefficient": z.string(),
+});
 
-export interface DailyClosedPrice {
-  time: string;
-  closePrice: string;
-}
+export const dailyClosePriceSchema = z.object({
+  time: z.string(),
+  closePrice: z.string(),
+});
 
-export interface CompanyOverview {
-  Symbol: string;
-  AssetType: string;
-  Name: string;
-  Description: string;
-  CIK: string;
-  Exchange: string;
-  Currency: string;
-  Country: string;
-  Sector: string;
-  Industry: string;
-  Address: string;
-  FiscalYearEnd: string;
-  LatestQuarter: Date;
-  MarketCapitalization: string;
-  EBITDA: string;
-  PERatio: string;
-  PEGRatio: string;
-  BookValue: string;
-  DividendPerShare: string;
-  DividendYield: string;
-  EPS: string;
-  RevenuePerShareTTM: string;
-  ProfitMargin: string;
-  OperatingMarginTTM: string;
-  ReturnOnAssetsTTM: string;
-  ReturnOnEquityTTM: string;
-  RevenueTTM: string;
-  GrossProfitTTM: string;
-  DilutedEPSTTM: string;
-  QuarterlyEarningsGrowthYOY: string;
-  QuarterlyRevenueGrowthYOY: string;
-  AnalystTargetPrice: string;
-  TrailingPE: string;
-  ForwardPE: string;
-  PriceToSalesRatioTTM: string;
-  PriceToBookRatio: string;
-  EVToRevenue: string;
-  EVToEBITDA: string;
-  Beta: string;
-  "52WeekHigh": string;
-  "52WeekLow": string;
-  "50DayMovingAverage": string;
-  "200DayMovingAverage": string;
-  SharesOutstanding: string;
-  DividendDate: Date;
-  ExDividendDate: Date;
-}
+export const companyOverviewSchema = z.object({
+  Symbol: z.string(),
+  AssetType: z.string(),
+  Name: z.string(),
+  Description: z.string(),
+  CIK: z.string(),
+  Exchange: z.string(),
+  Currency: z.string(),
+  Country: z.string(),
+  Sector: z.string(),
+  Industry: z.string(),
+  Address: z.string(),
+  FiscalYearEnd: z.string(),
+  LatestQuarter: z.string(),
+  MarketCapitalization: z.string(),
+  EBITDA: z.string(),
+  PERatio: z.string(),
+  PEGRatio: z.string(),
+  BookValue: z.string(),
+  DividendPerShare: z.string(),
+  DividendYield: z.string(),
+  EPS: z.string(),
+  RevenuePerShareTTM: z.string(),
+  ProfitMargin: z.string(),
+  OperatingMarginTTM: z.string(),
+  ReturnOnAssetsTTM: z.string(),
+  ReturnOnEquityTTM: z.string(),
+  RevenueTTM: z.string(),
+  GrossProfitTTM: z.string(),
+  DilutedEPSTTM: z.string(),
+  QuarterlyEarningsGrowthYOY: z.string(),
+  QuarterlyRevenueGrowthYOY: z.string(),
+  AnalystTargetPrice: z.string(),
+  TrailingPE: z.string(),
+  ForwardPE: z.string(),
+  PriceToSalesRatioTTM: z.string(),
+  PriceToBookRatio: z.string(),
+  EVToRevenue: z.string(),
+  EVToEBITDA: z.string(),
+  Beta: z.string(),
+  "52WeekHigh": z.string(),
+  "52WeekLow": z.string(),
+  "50DayMovingAverage": z.string(),
+  "200DayMovingAverage": z.string(),
+  SharesOutstanding: z.string(),
+  DividendDate: z.string(),
+  ExDividendDate: z.string(),
+});
 
-export interface CompanyBasicInfo {
-  name: string;
-  description: string;
-  country: string;
-  "Market Capitalization": string;
-}
+export const companyBasicInfoSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  country: z.string(),
+  "Market Capitalization": z.string(),
+});
+
+export const timeSeriesDailyAdjustedSchema = z.object({
+  "Meta Data": metaDataSchema,
+  "Time Series (Daily)": z.record(timeSeriesDailySchema),
+});
+
+
+export type TimeSeriesDailyAdjusted = z.infer<
+  typeof timeSeriesDailyAdjustedSchema
+>;
+export type MetaData = z.infer<typeof metaDataSchema>;
+export type TimeSeriesDaily = z.infer<typeof timeSeriesDailySchema>;
+export type DailyClosePrice = z.infer<typeof dailyClosePriceSchema>;
+export type CompanyOverview = z.infer<typeof companyOverviewSchema>;
+export type CompanyBasicInfo = z.infer<typeof companyBasicInfoSchema>;
