@@ -12,3 +12,7 @@
 6. enter a symbol and click on submit button or hit `enter` button to open the info page
 
 <img src="/public/form.png"/>
+
+# Online Demo
+
+[Demo](https://alpha-vantage-stock-info.netlify.app/)
