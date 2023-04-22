@@ -14,9 +14,11 @@ const fetchDailyClosePrices = async (symbol: string) =>
 
 export const useFetchDailyClosePrices = (symbol: string) => {
   return useQuery(
-    ["fetchDailyClosePrices"],
+    ["fetchDailyClosePrices", symbol],
     () => fetchDailyClosePrices(symbol),
-    { enabled: !!symbol }
+    {
+      enabled: !!symbol,
+    }
   );
 };
 
@@ -27,6 +29,10 @@ const fetchCompanyBasicInfo = async (symbol: string) =>
   companyOverviewAdaptor(await FetchData<CompanyOverview>("overView", symbol));
 
 export const useFetchCompanyBasicInfo = (symbol: string) =>
-  useQuery(["fetchCompanyBasicInfo"], () => fetchCompanyBasicInfo(symbol), {
-    enabled: !!symbol,
-  });
+  useQuery(
+    ["fetchCompanyBasicInfo", symbol],
+    () => fetchCompanyBasicInfo(symbol),
+    {
+      enabled: !!symbol,
+    }
+  );
