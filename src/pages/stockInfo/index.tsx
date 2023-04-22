@@ -22,7 +22,7 @@ function StockInfo() {
       >
         &larr; Back
       </button>
-      {/* <h1 className="text-center text-4xl">{info[0][1]}</h1> */}
+      <CompanyName symbol={symbol} />
       <div className="my-10 flex min-h-full w-full flex-col justify-around gap-8 lg:flex-row-reverse">
         <CompanyInfo symbol={symbol} />
         <DailyClosePricesChart symbol={symbol} />
@@ -46,6 +46,18 @@ function CompanyInfo({ symbol }: { symbol: string }) {
   const records = Object.entries(companyInfo);
 
   return <Table className="w-full lg:w-1/2" records={records} />;
+}
+
+function CompanyName({ symbol }: { symbol: string }) {
+  const {
+    data: companyInfo,
+    isError,
+    isLoading,
+  } = useFetchCompanyBasicInfo(symbol);
+
+  return isError || isLoading ? null : (
+    <h1 className="text-center text-4xl">{companyInfo.name}</h1>
+  );
 }
 
 function DailyClosePricesChart({ symbol }: { symbol: string }) {
