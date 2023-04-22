@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { persistQueryClient } from "@tanstack/react-query-persist-client";
-import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
+import localforage from "localforage";
 
 export const DAY_IN_MILLISECONDS = 86_400_000;
 
@@ -16,18 +17,16 @@ const queryClient = new QueryClient({
   },
 });
 
-const localStoragePersister = createSyncStoragePersister({
-  storage: window.localStorage,
-});
-
-persistQueryClient({
-  queryClient,
-  persister: localStoragePersister,
+const asyncStoragePersister = createAsyncStoragePersister({
+  storage: localforage,
 });
 
 export const Api = ({ children }: { children: ReactNode }) => (
-  <QueryClientProvider client={queryClient}>
+  <PersistQueryClientProvider
+    client={queryClient}
+    persistOptions={{ persister: asyncStoragePersister }}
+  >
     {children}
     <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+  </PersistQueryClientProvider>
 );
