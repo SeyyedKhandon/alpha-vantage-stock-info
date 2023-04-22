@@ -10,6 +10,9 @@ dependencies:
   '@tanstack/react-query-devtools':
     specifier: ^4.29.3
     version: 4.29.3(@tanstack/react-query@4.29.3)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-query-persist-client':
+    specifier: ^4.29.3
+    version: 4.29.3(@tanstack/react-query@4.29.3)
   axios:
     specifier: ^1.3.6
     version: 1.3.6
@@ -737,6 +740,15 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       superjson: 1.12.3
       use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/react-query-persist-client@4.29.3(@tanstack/react-query@4.29.3):
+    resolution: {integrity: sha512-yyQYr1cLxmakVdWOUV9U/7D4fLiIdtlFa18KIwUI1MSSRwvAjjdx6D4GSmsuLXL9eSudNMyvpy5iTAICv2+CoQ==}
+    peerDependencies:
+      '@tanstack/react-query': 4.29.3
+    dependencies:
+      '@tanstack/query-persist-client-core': 4.29.1
+      '@tanstack/react-query': 4.29.3(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /@tanstack/react-query@4.29.3(react-dom@18.2.0)(react@18.2.0):
