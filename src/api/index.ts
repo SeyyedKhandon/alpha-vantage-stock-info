@@ -1,4 +1,4 @@
-export { endPoints, FetchData } from "./config";
+export { endPoints, fetchData } from "./config";
 export { Api } from "./provider";
 
 // modules

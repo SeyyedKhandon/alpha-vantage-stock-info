@@ -4,8 +4,22 @@ import { Params } from "react-router-dom";
 import { vi } from "vitest";
 import { Api } from "@/api";
 import StockInfo from "./index";
+import { AAPL_OVERVIEW } from "@/test/db";
 
 const symbol = "AAPL";
+const prepareEnvironment = () => {
+  vi.mock("react-router-dom", () => ({
+    useParams: (): Readonly<Params<string>> => ({
+      symbol,
+    }),
+    useNavigate: vi.fn(),
+  }));
+  global.ResizeObserver = vi.fn().mockImplementation(() => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+  }));
+};
 
 describe("StockInfo", () => {
   beforeAll(() => server.listen());
@@ -13,10 +27,7 @@ describe("StockInfo", () => {
   afterAll(() => server.close());
 
   test("displays skeleton when fetching data", () => {
-    vi.mock("react-router-dom", () => ({
-      useParams: (): Readonly<Params<string>> => ({ symbol }),
-      useNavigate: vi.fn(),
-    }));
+    prepareEnvironment();
     render(
       <Api>
         <StockInfo />
@@ -27,15 +38,7 @@ describe("StockInfo", () => {
   });
 
   it("renders the company info table and daily close prices chart", async () => {
-    vi.mock("react-router-dom", () => ({
-      useParams: (): Readonly<Params<string>> => ({ symbol }),
-      useNavigate: vi.fn(),
-    }));
-    global.ResizeObserver = vi.fn().mockImplementation(() => ({
-      observe: vi.fn(),
-      unobserve: vi.fn(),
-      disconnect: vi.fn(),
-    }));
+    prepareEnvironment();
     render(
       <Api>
         <StockInfo />
@@ -43,6 +46,7 @@ describe("StockInfo", () => {
     );
     await waitFor(() => {
       screen.getByRole("table");
+      screen.getAllByText(AAPL_OVERVIEW.Name);
       screen.getByTestId("chart");
     });
   });

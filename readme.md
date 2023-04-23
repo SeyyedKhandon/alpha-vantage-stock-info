@@ -1,6 +1,14 @@
 # Stock Market Info App
 
+Alpha Vantage provides enterprise-grade financial market data through a set of powerful and developer-friendly data APIs and spreadsheets. From traditional asset classes (e.g., stocks, ETFs, mutual funds) to economic indicators, from foreign exchange rates to commodities, from fundamental data to technical indicators, Alpha Vantage is your one-stop-shop for real-time and historical global market data delivered through cloud-based APIs, Excel, and Google Sheets.
+
+Stock Market Info is web app that you can use to see any stock information and it's daily time series close price via a chart.
+
+Here is the online demo: [Stock Market Info App](https://alpha-vantage-stock-info.netlify.app/)
+
+<a href="https://alpha-vantage-stock-info.netlify.app/" target="_blank">
 <img src="/public/stock-info.png"/>
+</a>
 
 # How to run:
 
@@ -13,11 +21,19 @@
 
 <img src="/public/form.png"/>
 
-# Online Demo
+# How to test:
 
-[Demo](https://alpha-vantage-stock-info.netlify.app/)
+- Running test `npm run test`
+- Web based test runner report `npm run test:ui`
+- Test coverage `npm run coverage`
 
-# Overview
+## Other Scripts
+
+- Development `npm run dev`
+- Build `npm run build`
+- Lint `npm run lint`
+
+# Project Overview
 
 - [x] React
 - [x] Typescript
@@ -26,7 +42,7 @@
 - [x] React-Router
 - [x] Vite
 - [x] Vitest - Jest - React Testing Library - MSW
-- [x] Test Coverage > 70%
+- [x] Test Coverage > 80%
 - [x] Prettier
 - [x] Eslint
 - [x] Pnpm
@@ -36,4 +52,8 @@
 - [x] Async Cache using IndexDB
 - [x] Charts using rechart
 - [ ] Theme
+- [ ] Husky - Commit Lint
 - [ ] Login - Authentication
+- [ ] Sentry
+- [ ] SonarQube
+- [ ] Jest preview

@@ -24,7 +24,7 @@ export const endPoints = (symbol?: string) => ({
   symbols: queryBuilder("LISTING_STATUS"),
 });
 
-export async function FetchData<T>(
+export async function fetchData<T>(
   type: keyof ReturnType<typeof endPoints>,
   symbol?: string
 ) {

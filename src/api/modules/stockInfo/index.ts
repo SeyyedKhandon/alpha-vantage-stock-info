@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { FetchData } from "@/api";
+import { fetchData } from "@/api";
 import {
   CompanyOverview,
   TimeSeriesDailyAdjusted,
@@ -14,7 +14,7 @@ import { dailyClosePricesAdaptor, companyOverviewAdaptor } from "./adaptor";
 const fetchDailyClosePrices = async (symbol: string) =>
   dailyClosePricesAdaptor(
     timeSeriesDailyAdjustedSchema.parse(
-      await FetchData<TimeSeriesDailyAdjusted>("dailyPrices", symbol)
+      await fetchData<TimeSeriesDailyAdjusted>("dailyPrices", symbol)
     )
   );
 
@@ -34,7 +34,7 @@ export const useFetchDailyClosePrices = (symbol: string) => {
 const fetchCompanyBasicInfo = async (symbol: string) =>
   companyOverviewAdaptor(
     companyOverviewSchema.parse(
-      await FetchData<CompanyOverview>("overView", symbol)
+      await fetchData<CompanyOverview>("overView", symbol)
     )
   );
 
