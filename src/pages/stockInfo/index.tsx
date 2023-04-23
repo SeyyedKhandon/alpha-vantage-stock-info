@@ -3,6 +3,7 @@ import Chart from "@/components/chart";
 import { useNavigate, useParams } from "react-router-dom";
 import { ChartSkeleton, ListSkeleton } from "@/components/skeleton";
 import { useFetchCompanyBasicInfo, useFetchDailyClosePrices } from "@/api";
+import ThemeSwitcher from "@/components/themeSwitcher";
 
 function StockInfo() {
   const navigate = useNavigate();
@@ -15,13 +16,16 @@ function StockInfo() {
 
   return (
     <>
-      <button
-        type="submit"
-        onClick={() => navigate("/")}
-        className="rounded-lg px-5 py-2.5 text-center text-sm font-medium text-slate-800 hover:bg-slate-200"
-      >
-        &larr; Back
-      </button>
+      <div className="flex items-center justify-between">
+        <button
+          type="submit"
+          onClick={() => navigate("/")}
+          className="rounded-lg px-5 py-2.5 text-center text-sm font-medium text-slate-800 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-800"
+        >
+          &larr; Back
+        </button>
+        <ThemeSwitcher />
+      </div>
       <CompanyName symbol={symbol} />
       <div className="my-10 flex min-h-full w-full flex-col justify-around gap-8 lg:flex-row-reverse">
         <CompanyInfo symbol={symbol} />
@@ -56,7 +60,9 @@ export function CompanyName({ symbol }: { symbol: string }) {
   } = useFetchCompanyBasicInfo(symbol);
 
   return isError || isLoading ? null : (
-    <h1 className="text-center text-4xl">{companyInfo.name}</h1>
+    <h1 className="text-center text-4xl text-primary dark:text-primaryDark">
+      {companyInfo.name}
+    </h1>
   );
 }
 

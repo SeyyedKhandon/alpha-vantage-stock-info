@@ -7,7 +7,7 @@ Stock Market Info is web app that you can use to see any stock information and i
 Here is the online demo: [Stock Market Info App](https://alpha-vantage-stock-info.netlify.app/)
 
 <a href="https://alpha-vantage-stock-info.netlify.app/" target="_blank">
-<img src="/public/stock-info.png"/>
+<img src="/public/app-screen2.png"/>
 </a>
 
 # How to run:
@@ -38,7 +38,9 @@ Here is the online demo: [Stock Market Info App](https://alpha-vantage-stock-inf
 - [x] React
 - [x] Typescript
 - [x] Tailwind
+- [x] Mobile-First
 - [x] Axios, React-Query
+- [x] Async Client Side Cache using IndexDB
 - [x] React-Router
 - [x] Vite
 - [x] Vitest - Jest - React Testing Library - MSW
@@ -49,9 +51,9 @@ Here is the online demo: [Stock Market Info App](https://alpha-vantage-stock-inf
 - [x] ZOD
 - [x] Import Path Sugar - `@/`
 - [x] Netlify- Deploy Online Version
-- [x] Async Cache using IndexDB
 - [x] Charts using rechart
-- [ ] Theme
+- [x] Dark Theme
+- [ ] Multi Language
 - [ ] Husky - Commit Lint
 - [ ] Login - Authentication
 - [ ] Sentry

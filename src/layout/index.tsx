@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 function Layout() {
   return (
-    <main className="mx-auto min-h-screen max-w-7xl p-10">
+    <div className="mx-auto max-w-7xl">
       <Outlet />
-    </main>
+    </div>
   );
 }
 

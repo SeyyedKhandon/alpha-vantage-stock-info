@@ -33,9 +33,11 @@ export default function Chart<T>({
     </ResponsiveContainer>
   );
   return (
-    <div className={className} data-testid="chart">
+    <div className={`text-slate-500 ${className}`} data-testid="chart">
       {renderLineChart}
-      <h3 className="text-center text-xl">{title}</h3>
+      <h3 className="text-center text-xl text-primary dark:text-primaryDark">
+        {title}
+      </h3>
     </div>
   );
 }
