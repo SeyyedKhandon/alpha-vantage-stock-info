@@ -13,8 +13,10 @@ export default function Table({
             <th className="flex-1 bg-slate-200 p-4 pl-8  text-left font-medium capitalize text-slate-500 dark:bg-slate-800 dark:text-slate-200">
               {record[0]}
             </th>
-            <td className="line-clamp-1 flex-1 p-4 pl-8 dark:text-slate-200">
-              {record[1]}
+            <td className="flex-1 p-4 pl-8 dark:text-slate-200">
+              <span className="line-clamp-1" title={`${record[1]}`}>
+                {record[1]}
+              </span>
             </td>
           </tr>
         ))}

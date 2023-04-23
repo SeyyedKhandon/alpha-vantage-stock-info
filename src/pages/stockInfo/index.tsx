@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ChartSkeleton, ListSkeleton } from "@/components/skeleton";
 import { useFetchCompanyBasicInfo, useFetchDailyClosePrices } from "@/api";
 import ThemeSwitcher from "@/components/themeSwitcher";
+import { Button } from "@/components/button";
 
 function StockInfo() {
   const navigate = useNavigate();
@@ -15,15 +16,11 @@ function StockInfo() {
   }
 
   return (
-    <>
+    <div className="w-full">
       <div className="flex items-center justify-between">
-        <button
-          type="submit"
-          onClick={() => navigate("/")}
-          className="rounded-lg px-5 py-2.5 text-center text-sm font-medium text-slate-800 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-800"
-        >
+        <Button direction="rtl" onClick={() => navigate("/")}>
           &larr; Back
-        </button>
+        </Button>
         <ThemeSwitcher />
       </div>
       <CompanyName symbol={symbol} />
@@ -31,7 +28,7 @@ function StockInfo() {
         <CompanyInfo symbol={symbol} />
         <DailyClosePricesChart symbol={symbol} />
       </div>
-    </>
+    </div>
   );
 }
 
