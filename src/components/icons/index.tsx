@@ -1,3 +1,9 @@
+const SvgSet = ({ attributeName = "opacity", begin = "0.5s", to = "1s" }) => (
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  <set attributeName={attributeName} begin={begin} to={to} />
+);
+
 export const SunIcon = ({ className, ...rest }: { className: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +44,7 @@ export const SunIcon = ({ className, ...rest }: { className: string }) => (
         d="M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z"
         opacity="0"
       >
-        <set attributeName="opacity" begin="0.5s" to="1" />
+        <SvgSet attributeName="opacity" begin="0.5s" to="1" />
       </path>
     </g>
     <g fill="currentColor" fillOpacity="0">
@@ -164,7 +170,7 @@ export const SunIcon = ({ className, ...rest }: { className: string }) => (
       fill="currentColor"
       mask="url(#lineMdSunnyFilledLoopToMoonFilledLoopTransition1)"
     >
-      <set attributeName="opacity" begin="0.5s" to="0" />
+      <SvgSet attributeName="opacity" begin="0.5s" to="0" />
       <animate
         fill="freeze"
         attributeName="r"
@@ -261,7 +267,7 @@ export const MoonIcon = ({ className, ...rest }: { className: string }) => (
       strokeWidth="2"
     >
       <path d="M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z" />
-      <set attributeName="opacity" begin="0.6s" to="0" />
+      <SvgSet attributeName="opacity" begin="0.6s" to="0" />
     </g>
     <mask id="lineMdMoonFilledToSunnyFilledLoopTransition0">
       <circle cx="12" cy="12" r="12" fill="#fff" />
@@ -320,7 +326,7 @@ export const MoonIcon = ({ className, ...rest }: { className: string }) => (
       mask="url(#lineMdMoonFilledToSunnyFilledLoopTransition0)"
       opacity="0"
     >
-      <set attributeName="opacity" begin="0.6s" to="1" />
+      <SvgSet attributeName="opacity" begin="0.6s" to="1" />
       <animate
         fill="freeze"
         attributeName="r"
