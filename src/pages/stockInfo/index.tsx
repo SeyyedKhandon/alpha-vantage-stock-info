@@ -31,7 +31,7 @@ function StockInfo() {
   );
 }
 
-function CompanyInfo({ symbol }: { symbol: string }) {
+export function CompanyInfo({ symbol }: { symbol: string }) {
   const {
     data: companyInfo,
     isError,
@@ -48,7 +48,7 @@ function CompanyInfo({ symbol }: { symbol: string }) {
   return <Table className="w-full lg:w-1/2" records={records} />;
 }
 
-function CompanyName({ symbol }: { symbol: string }) {
+export function CompanyName({ symbol }: { symbol: string }) {
   const {
     data: companyInfo,
     isError,
@@ -60,7 +60,7 @@ function CompanyName({ symbol }: { symbol: string }) {
   );
 }
 
-function DailyClosePricesChart({ symbol }: { symbol: string }) {
+export function DailyClosePricesChart({ symbol }: { symbol: string }) {
   const {
     data: dailyClosePrices,
     isError,

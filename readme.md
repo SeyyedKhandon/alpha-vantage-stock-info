@@ -16,3 +16,24 @@
 # Online Demo
 
 [Demo](https://alpha-vantage-stock-info.netlify.app/)
+
+# Overview
+
+- [x] React
+- [x] Typescript
+- [x] Tailwind
+- [x] Axios, React-Query
+- [x] React-Router
+- [x] Vite
+- [x] Vitest - Jest - React Testing Library - MSW
+- [x] Test Coverage > 70%
+- [x] Prettier
+- [x] Eslint
+- [x] Pnpm
+- [x] ZOD
+- [x] Import Path Sugar - `@/`
+- [x] Netlify- Deploy Online Version
+- [x] Async Cache using IndexDB
+- [x] Charts using rechart
+- [ ] Theme
+- [ ] Login - Authentication

@@ -1,5 +1,5 @@
 import Router from "@/router";
-import { Api } from "./api";
+import { Api } from "@/api";
 function App() {
   return (
     <Api>

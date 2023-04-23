@@ -1,6 +1,7 @@
 export function ListSkeleton({ rows = 6, className = "" }) {
   return (
     <div
+      data-testid="list-skeleton"
       role="status"
       className={`flex-grow animate-pulse space-y-4 divide-y divide-gray-200 rounded border border-gray-200 p-4 shadow md:p-6 ${className}`}
     >
@@ -20,6 +21,7 @@ export function ListSkeleton({ rows = 6, className = "" }) {
 export function ChartSkeleton({ className = "" }) {
   return (
     <div
+      data-testid="chart-skeleton"
       role="status"
       className={`animate-pulse rounded border border-gray-200 p-4 shadow md:p-6 ${className}`}
     >

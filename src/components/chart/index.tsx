@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function Chart({
+export default function Chart<T>({
   className = "",
   data,
   title = "",
@@ -16,7 +16,7 @@ export default function Chart({
   xAxisDataKey = "time",
 }: {
   className: string;
-  data: any[];
+  data: T[];
   title: string;
   ChartDataKey: string;
   xAxisDataKey: string;
@@ -33,7 +33,7 @@ export default function Chart({
     </ResponsiveContainer>
   );
   return (
-    <div className={className}>
+    <div className={className} data-testid="chart">
       {renderLineChart}
       <h3 className="text-center text-xl">{title}</h3>
     </div>

@@ -1,16 +1,18 @@
 import axios from "axios";
 import { AlphaVantageQueryFunctions } from "./types";
 
-axios.defaults.baseURL = "https://www.alphavantage.co/";
+export const baseURL = "https://www.alphavantage.co/";
 
 const apiKey = `apikey=${import.meta.env.VITE_API_KEY}`;
+
+axios.defaults.baseURL = baseURL;
 
 const queryBuilder = (
   queryType: AlphaVantageQueryFunctions,
   symbol?: string,
   customQuery?: string
 ) =>
-  !!customQuery
+  customQuery
     ? `${customQuery}&${apiKey}`
     : `query?function=${queryType}${
         symbol ? "&symbol=" + symbol : ""

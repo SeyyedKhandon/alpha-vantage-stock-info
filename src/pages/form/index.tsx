@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 function Form() {
   const navigate = useNavigate();
@@ -23,7 +23,9 @@ function Form() {
             placeholder="AAPL"
             required
             value={symbol}
-            onChange={(e: any) => setSymbol(e.target.value.toUpperCase())}
+            onChange={(e: FormEvent<HTMLInputElement>) =>
+              setSymbol(e.currentTarget.value.toUpperCase())
+            }
             onKeyDown={handleKeyDown}
           />
         </label>
