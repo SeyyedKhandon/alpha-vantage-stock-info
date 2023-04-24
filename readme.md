@@ -53,6 +53,8 @@ Here is the online demo: [Stock Market Info App](https://alpha-vantage-stock-inf
 - [x] Netlify- Deploy Online Version
 - [x] Charts using rechart
 - [x] Dark Theme
+- [ ] PWA
+- [ ] Add Server ( with cache )
 - [ ] Multi Language
 - [ ] Husky - Commit Lint
 - [ ] Login - Authentication

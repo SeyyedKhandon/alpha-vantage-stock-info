@@ -16,7 +16,7 @@ function StockInfo() {
   }
 
   return (
-    <div className="w-full">
+    <div className="container">
       <div className="flex items-center justify-between">
         <Button direction="rtl" onClick={() => navigate("/")}>
           &larr; Back
