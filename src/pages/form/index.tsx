@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FormEvent, useState } from "react";
-import ThemeSwitcher from "@/components/themeSwitcher";
-import { Button } from "@/components/button";
-import { TextInput } from "@/components/textInput";
+import { TextInput, Button, ThemeSwitcher } from "@/components";
 
 function Form() {
   const navigate = useNavigate();

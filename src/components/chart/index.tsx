@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function Chart<T>({
+export function Chart<T>({
   className = "",
   data,
   title = "",

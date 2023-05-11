@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import Loading from "@/components/loading";
+import { Loading } from "@/components";
 import Layout from "@/layout";
 
 const Form = lazy(() => import("@/pages/form"));

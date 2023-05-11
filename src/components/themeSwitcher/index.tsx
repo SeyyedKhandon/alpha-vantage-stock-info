@@ -1,7 +1,7 @@
-import { SunIcon, MoonIcon } from "@/components/icons";
+import { SunIcon, MoonIcon } from "@/components";
 import useThemeSwitcher from "./useThemeSwitcher";
 
-function ThemeSwitcher({ className = "" }: { className?: string }) {
+export function ThemeSwitcher({ className = "" }: { className?: string }) {
   const [mode, setMode] = useThemeSwitcher();
 
   return (
@@ -22,5 +22,3 @@ function ThemeSwitcher({ className = "" }: { className?: string }) {
     </button>
   );
 }
-
-export default ThemeSwitcher;

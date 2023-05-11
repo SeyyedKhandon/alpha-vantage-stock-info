@@ -1,10 +1,13 @@
-import Table from "@/components/table";
-import Chart from "@/components/chart";
 import { useNavigate, useParams } from "react-router-dom";
-import { ChartSkeleton, ListSkeleton } from "@/components/skeleton";
 import { useFetchCompanyBasicInfo, useFetchDailyClosePrices } from "@/api";
-import ThemeSwitcher from "@/components/themeSwitcher";
-import { Button } from "@/components/button";
+import {
+  Button,
+  ThemeSwitcher,
+  ChartSkeleton,
+  ListSkeleton,
+  Chart,
+  Table,
+} from "@/components";
 
 function StockInfo() {
   const navigate = useNavigate();
